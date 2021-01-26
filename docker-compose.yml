@@ -1,0 +1,57 @@
+version: '3.9'
+
+services:
+
+   db:
+        image: mysql:5.7
+        env_file: .env  
+        environment:
+          MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+          MYSQL_DATABASE: $MYSQL_DBNAME
+          MYSQL_USER: $MYSQL_USER
+          MYSQL_PASSWORD: $MYSQL_PASSWORD
+        ports:
+          - "3306:3306"
+        volumes:
+          - ./data/db:/var/lib/mysql
+          #- ./backup/${MYSQL_DBNAME}.sql:/docker-entrypoint-initdb.d/${MYSQL_DBNAME}.sql
+
+   app:
+        image: wordpress:5.6.0-php7.4-fpm
+        restart: unless-stopped
+        ports:
+          - 9000:9000
+        env_file: .env  
+        environment:
+          WORDPRESS_DB_HOST: db:3306
+          WORDPRESS_DB_USER: $MYSQL_USER
+          WORDPRESS_DB_PASSWORD: $MYSQL_PASSWORD
+          WORDPRESS_DB_NAME: $MYSQL_DBNAME
+          AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+          AWS_SECRET_ACCESS_KEY: $AWS_ACCESS_KEY_ID
+        volumes:
+          - ./files/wordpress:/var/www/html
+          - ./config/php.conf.ini:/usr/local/etc/php/conf.d/php.ini
+        depends_on:
+          - db 
+   
+   web:
+        depends_on:
+          - app
+        image: nginx:1.19.6
+        restart: unless-stopped
+        ports:
+          - 80:80
+        environment:
+          - NGINX_HOST=${PROJECT_NAME}.com
+          - NGINX_PORT=80  
+        volumes:
+          - ./files/wordpress:/var/www/html
+          - ./config/nginx-templates:/etc/nginx/templates
+          - ./logs/nginx:/var/log/nginx
+               
+volumes:
+    data:
+    config:  
+    files:
+    logs:
