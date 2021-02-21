@@ -29,9 +29,9 @@ Show stack
 ```bash
                Name                             Command               State                 Ports
 ---------------------------------------------------------------------------------------------------------------
-docker-nginx-wordpress-mysql_app_1   docker-entrypoint.sh php-fpm     Up      0.0.0.0:9000->9000/tcp
-docker-nginx-wordpress-mysql_db_1    docker-entrypoint.sh mysqld      Up      0.0.0.0:3306->3306/tcp, 33060/tcp
-docker-nginx-wordpress-mysql_web_1   /docker-entrypoint.sh ngin ...   Up      0.0.0.0:80->80/tcp
+local_app_1   docker-entrypoint.sh php-fpm     Up      0.0.0.0:9000->9000/tcp
+local_db_1    docker-entrypoint.sh mysqld      Up      0.0.0.0:3306->3306/tcp, 33060/tcp
+local_web_1   /docker-entrypoint.sh ngin ...   Up      0.0.0.0:80->80/tcp
 ```
 
 Enter into a container
