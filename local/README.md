@@ -4,7 +4,8 @@ Generic stack for running wordpress cms with mysql and nginx.
 
 After clonning, create an .env file. Fill empty variables
 
-```PROJECT_NAME=
+```bash
+PROJECT_NAME=
 MYSQL_HOST=db
 MYSQL_PORT=3306
 MYSQL_DBNAME=
@@ -25,7 +26,8 @@ Build stack
 Show stack
 `docker-compose ps`
 
-```               Name                             Command               State                 Ports
+```bash
+               Name                             Command               State                 Ports
 ---------------------------------------------------------------------------------------------------------------
 docker-nginx-wordpress-mysql_app_1   docker-entrypoint.sh php-fpm     Up      0.0.0.0:9000->9000/tcp
 docker-nginx-wordpress-mysql_db_1    docker-entrypoint.sh mysqld      Up      0.0.0.0:3306->3306/tcp, 33060/tcp
@@ -37,14 +39,16 @@ Enter into a container
 
 ## Backup DB
 
-```mkdir ./backup
+```bash
+mkdir ./backup
 source .env
 docker-compose exec mysql mysqldump -uroot ---password=${MYSQL_ROOT_PASSWORD}  ${MYSQL_DBNAME} > ./backup/${MYSQL_DBNAME}.sql
 ```
 
 ## Clean stack
 
-```docker-compose down -v  
+```bash
+docker-compose down -v  
 sudo rm -rf ./data/* ./logs/*
 ```
 
@@ -52,7 +56,8 @@ sudo rm -rf ./data/* ./logs/*
 
 Add this line at then end of volumes declaration for db containers
 
-```db:
+```yaml
+db:
         image: mysql:5.7
         ...
         volumes:

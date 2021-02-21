@@ -4,7 +4,8 @@ Generic stack for running wordpress cms with mysql and nginx.
 
 After clonning, create an .env file. Fill empty variables
 
-```PROJECT_NAME=
+```bash
+PROJECT_NAME=
 MYSQL_HOST=
 MYSQL_PORT=3306
 MYSQL_DBNAME=
@@ -25,7 +26,8 @@ Build stack
 Display contenairs
 `docker-compose ps`
 
-```               Name                             Command               State                 Ports
+```bash
+              Name                             Command               State                 Ports
 ---------------------------------------------------------------------------------------------------------------
 docker-nginx-wordpress-mysql_app_1   docker-entrypoint.sh php-fpm     Up      0.0.0.0:9000->9000/tcp
 docker-nginx-wordpress-mysql_web_1   /docker-entrypoint.sh ngin ...   Up      0.0.0.0:80->80/tcp
@@ -33,6 +35,7 @@ docker-nginx-wordpress-mysql_web_1   /docker-entrypoint.sh ngin ...   Up      0.
 
 ## Clean stack
 
-```docker-compose down -v  
+```bash
+docker-compose down -v  
 sudo rm -rf ./data/* ./logs/*
 ```
