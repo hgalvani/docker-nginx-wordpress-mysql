@@ -6,6 +6,7 @@ Generic docker stack for running wordpress cms with nginx and optional mysql in 
 
 Environnement are split into differents directories
 
+```bash
 ├── LICENSE
 ├── local
 │   ├── backup
@@ -22,3 +23,4 @@ Environnement are split into differents directories
 │   ├── logs
 │   └── README.md
 └── README.md
+```
