@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+
+   web:
+        image: nginx:1.19
+        restart: always
+        ports:
+          - 80:80
+        # environment:
+        #   - NGINX_HOST=${PROJECT_NAME}.com
+        #   - NGINX_PORT=${NGINX_PORT}
+        #   - NGINX_ALLOWED_IP=${NGINX_ALLOWED_IP_FOR_ADMIN}
+        volumes:
+          # - ./files/wordpress:/var/www/html
+          # - ./config/nginx-templates:/etc/nginx/templates
+          - ./logs/nginx:/var/log/nginx
+               
+volumes:
+    # config:  
+    # files:
+    logs:
