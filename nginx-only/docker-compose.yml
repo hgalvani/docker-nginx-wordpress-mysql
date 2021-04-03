@@ -7,16 +7,11 @@ services:
         restart: always
         ports:
           - 80:80
-        # environment:
-        #   - NGINX_HOST=${PROJECT_NAME}.com
-        #   - NGINX_PORT=${NGINX_PORT}
-        #   - NGINX_ALLOWED_IP=${NGINX_ALLOWED_IP_FOR_ADMIN}
         volumes:
-          # - ./files/wordpress:/var/www/html
-          # - ./config/nginx-templates:/etc/nginx/templates
+          - ./config/nginx-templates:/etc/nginx/templates
+          - ./files/intranet:/var/www/html
           - ./logs/nginx:/var/log/nginx
                
 volumes:
-    # config:  
-    # files:
+    config:  
     logs:

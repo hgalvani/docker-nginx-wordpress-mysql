@@ -16,6 +16,12 @@ Environnement are split into differents directories
 │   ├── files
 │   ├── logs
 │   └── README.md
+├── nginx-only
+│   ├── config
+│   ├── docker-compose.yml
+│   ├── files
+│   ├── logs
+│   └── README.md
 ├── prod
 │   ├── config
 │   ├── docker-compose.yml
