@@ -13,5 +13,6 @@ services:
           - ./logs/nginx:/var/log/nginx
                
 volumes:
-    config:  
+    config:
+    files:  
     logs:

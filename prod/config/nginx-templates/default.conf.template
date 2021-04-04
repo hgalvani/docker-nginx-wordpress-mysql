@@ -1,11 +1,7 @@
 server {
     listen 80 ;
 
-    server_name _; 
-
-    root /var/www/html;
-
-    index index.html;
+    server_name  localhost;
 
     access_log /var/log/nginx/default.access.log;
     error_log /var/log/nginx/default.error.log;
@@ -18,6 +14,19 @@ server {
     add_header Referrer-Policy "no-referrer-when-downgrade" always;
     add_header Content-Security-Policy "default-src * data: 'unsafe-eval' 'unsafe-inline'" always;
 
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+
+    #error_page  404              /404.html;
+
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
 
     location ~ /\.ht {
         deny all;

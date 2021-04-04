@@ -31,6 +31,7 @@ services:
           - NGINX_ALLOWED_IP=${NGINX_ALLOWED_IP_FOR_ADMIN}
         volumes:
           - ./files/wordpress:/var/www/html
+          - ./files/default:/var/www/html/default
           - ./config/nginx-templates:/etc/nginx/templates
           - ./logs/nginx:/var/log/nginx
                
