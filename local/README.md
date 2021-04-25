@@ -13,8 +13,6 @@ MYSQL_USER=
 MYSQL_PASSWORD=
 NGINX_PORT=
 NGINX_ALLOWED_IP_FOR_ADMIN=
-AWS_ACCESS_KEY_ID=
-AWS_SECRET_ACCESS_KEY=
 ```
 
 Check config with
@@ -41,9 +39,10 @@ Enter into a container
 
 ```bash
 mkdir ./backup
-source .env
-docker-compose exec mysql mysqldump -uroot ---password=${MYSQL_ROOT_PASSWORD}  ${MYSQL_DBNAME} > ./backup/${MYSQL_DBNAME}.sql
+docker-compose exec mysql mysqldump -uroot --password=${MYSQL_ROOT_PASSWORD}  ${MYSQL_DBNAME} > ./backup/${MYSQL_DBNAME}.sql
 ```
+
+=> Get value in your .env file
 
 ## Clean stack
 
@@ -62,5 +61,5 @@ db:
         ...
         volumes:
           ...
-          - ./backup/<MYSQL_DBNAME>.sql:/docker-entrypoint-initdb.d/<MYSQL_DBNAME>sql
+          - ./backup/<MYSQL_DBNAME>.sql:/docker-entrypoint-initdb.d/<MYSQL_DBNAME>.sql
 ```
