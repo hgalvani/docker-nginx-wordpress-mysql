@@ -1,10 +1,10 @@
 .env
 /*/.env
-data/*
 /*/data/*
-files/*
 /*/files/*
-logs/*
 /*/logs/*
-backup/*
 /*/backup/*
+*.sql
+/*/*.sql
+wordpress
+/*/wordpress
