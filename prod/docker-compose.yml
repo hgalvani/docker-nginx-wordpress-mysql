@@ -33,6 +33,7 @@ services:
           - ./files/wordpress:/var/www/html
           - ./files/default:/var/www/html/default
           - ./config/nginx-templates:/etc/nginx/templates
+          - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
           - ./logs/nginx:/var/log/nginx
                
 volumes:

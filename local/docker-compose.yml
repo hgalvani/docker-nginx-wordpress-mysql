@@ -48,6 +48,7 @@ services:
         volumes:
           - ./files/wordpress:/var/www/html
           - ./config/nginx-templates:/etc/nginx/templates
+          - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
           - ./logs/nginx:/var/log/nginx      
                
 volumes:
