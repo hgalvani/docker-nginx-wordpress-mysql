@@ -44,6 +44,14 @@ docker-compose exec mysql mysqldump -uroot --password=${MYSQL_ROOT_PASSWORD}  ${
 
 => Get value in your .env file
 
+## Backup Wordpress Files
+
+```bash
+docker cp local_app_1:/var/www/html ./backup/
+```
+
+Your backup directory is ./backup/html
+
 ## Clean stack
 
 ```bash

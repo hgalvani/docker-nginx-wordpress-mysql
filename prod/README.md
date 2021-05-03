@@ -31,6 +31,14 @@ prod_app_1   docker-entrypoint.sh php-fpm     Up      0.0.0.0:9000->9000/tcp
 prod_web_1   /docker-entrypoint.sh ngin ...   Up      0.0.0.0:80->80/tcp
 ```
 
+## Backup Wordpress Files
+
+```bash
+docker cp local_app_1:/var/www/html ./backup/
+```
+
+Your backup directory is ./backup/html
+
 ## Clean stack
 
 ```bash
